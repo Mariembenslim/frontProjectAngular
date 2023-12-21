@@ -1,0 +1,45 @@
+<div class="container">
+
+    <h2>Les produits</h2>
+
+    <div>
+        <app-create></app-create>
+</div> 
+
+    <div>
+        <input matInput (keyup)="filter($event)" placeholder="Rechercher">
+    </div>
+
+
+    <table mat-table [dataSource]="products" class="mat-elevation-z8" #mytable matSort>
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let  row; columns: columns;"></tr>
+        <ng-container matColumnDef="imageart">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Image</th>
+            <td mat-cell *matCellDef="let t"><img src={{t.image}} alt="" width="80" height="80" /></td>
+        </ng-container>
+        <ng-container matColumnDef="Prix">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Prix</th>
+            <td mat-cell *matCellDef="let t">{{ t.price}}</td>
+        </ng-container>
+        <ng-container matColumnDef="nom">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
+            <td mat-cell *matCellDef="let t">{{ t.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header >Action</th>
+            <td mat-cell *matCellDef="let t">
+                <app-view [productId]="t.id"></app-view>
+
+                  <app-edit [productId]="t.id"></app-edit>
+
+                  <button type="button" (click)=" deleteProduct(t.id)" class="btn btn-default">
+                    <i class="bi bi-trash-fill" style="color:red"></i>
+                  </button>
+
+            </td>
+        </ng-container>
+
+    </table>
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

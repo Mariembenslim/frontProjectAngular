@@ -1,0 +1,36 @@
+<!-- Button trigger modal -->
+<button class="btn btn-default"  (click)="openModal()">
+    <i class="bi bi-info-square-fill"></i>
+</button>
+    
+<!-- Modal -->
+  <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+    <div class="modal-dialog" role="document">
+          <div class="modal-content">
+                <div class="modal-header">
+                      <h4 class="modal-title">Détail Produit</h4>
+                      <button type="button" class="btn btn-default" aria-label="Close" (click)="closeModal()"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                <div class="modal-body">
+                    <template *ngTemplateOutlet="cardProduct"></template>
+                </div>
+                <div class="modal-footer">
+                      <button type="button" class="btn btn-default" (click)="closeModal()" >Close</button>
+                </div>
+       </div>
+    </div>
+</div>
+
+<!-- Card -->
+
+<ng-template #cardProduct>
+
+    <div class="card" style="width: 18rem;">
+        <img src={{products.image}} class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text">Nom : {{products.name}}</p>
+          <h6 class="card-subtitle mb-2 text-muted">{{products.price}} TND</h6>
+        </div>
+      </div>
+
+</ng-template>

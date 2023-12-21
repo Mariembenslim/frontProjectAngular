@@ -1,0 +1,22 @@
+<div class="container">
+  <h2 class="my-4">Historique de paiement</h2>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Paiement ID</th>
+          <th scope="col">Totale</th>
+          <th scope="col">Date de paiement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payment of payement">
+          <td>{{ payment.paymentId }}</td>
+          <td>{{ payment.amount }}</td>
+          <td>{{ payment.paymentDate | date: 'yyyy-MM-dd' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
